@@ -14,19 +14,8 @@ const dragonsSlice = createSlice({
     status: 'idle',
     error: null,
  },
- 
- const dragonsReducer = (state = [], action) => {
-    switch (action.type) {
-       case 'BOOK_DRAGON':
-         return state.map((dragon) =>
-           dragon.id === action.payload.dragonId
-             ? { ...dragon, reserved: action.payload.reserved }
-             : dragon
-         );
-       default:
-         return state;
-    }
-   };
+
+
  reducers: {
     reserveDragon: (state, action) => {
       const index = state.entities.findIndex(dragon => dragon.id === action.payload);
@@ -37,9 +26,6 @@ const dragonsSlice = createSlice({
       state.entities[index].reserved = false;
     },
  },
-
- 
-
 
  extraReducers: (builder) => {
     builder
